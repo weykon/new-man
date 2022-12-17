@@ -11,15 +11,36 @@
 		36C78D3A294B065C005D6226 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C78D39294B065C005D6226 /* ViewController.swift */; };
 		36C78D3C294B065D005D6226 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C78D3B294B065D005D6226 /* Assets.xcassets */; };
 		36C78D3F294B065D005D6226 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36C78D3D294B065D005D6226 /* Main.storyboard */; };
+		36C78D49294B0B8B005D6226 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C78D48294B0B8B005D6226 /* PopoverViewController.swift */; };
+		36C78D4B294B0DD7005D6226 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C78D4A294B0DD7005D6226 /* EventMonitor.swift */; };
+		36FADA4F294E3E4C00D98994 /* HotKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FADA4B294E38ED00D98994 /* HotKey.framework */; };
+		36FADA50294E3E4C00D98994 /* HotKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 36FADA4B294E38ED00D98994 /* HotKey.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		36FADA51294E3E4C00D98994 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				36FADA50294E3E4C00D98994 /* HotKey.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		36C78D34294B065C005D6226 /* NewMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C78D37294B065C005D6226 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36C78D39294B065C005D6226 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		36C78D3B294B065D005D6226 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36C78D3E294B065D005D6226 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36C78D40294B065D005D6226 /* NewMan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NewMan.entitlements; sourceTree = "<group>"; };
+		36C78D48294B0B8B005D6226 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		36C78D4A294B0DD7005D6226 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		36FADA4B294E38ED00D98994 /* HotKey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HotKey.framework; path = Carthage/Build/Mac/HotKey.framework; sourceTree = "<group>"; };
+		36FADA4E294E38ED00D98994 /* NewMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36FADA4F294E3E4C00D98994 /* HotKey.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,16 +59,9 @@
 			isa = PBXGroup;
 			children = (
 				36C78D36294B065C005D6226 /* NewMan */,
-				36C78D35294B065C005D6226 /* Products */,
+				36FADA4A294E38ED00D98994 /* Frameworks */,
+				36FADA4E294E38ED00D98994 /* NewMan.app */,
 			);
-			sourceTree = "<group>";
-		};
-		36C78D35294B065C005D6226 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				36C78D34294B065C005D6226 /* NewMan.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		36C78D36294B065C005D6226 /* NewMan */ = {
@@ -57,8 +72,18 @@
 				36C78D3B294B065D005D6226 /* Assets.xcassets */,
 				36C78D3D294B065D005D6226 /* Main.storyboard */,
 				36C78D40294B065D005D6226 /* NewMan.entitlements */,
+				36C78D48294B0B8B005D6226 /* PopoverViewController.swift */,
+				36C78D4A294B0DD7005D6226 /* EventMonitor.swift */,
 			);
 			path = NewMan;
+			sourceTree = "<group>";
+		};
+		36FADA4A294E38ED00D98994 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				36FADA4B294E38ED00D98994 /* HotKey.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,6 +96,7 @@
 				36C78D30294B065C005D6226 /* Sources */,
 				36C78D31294B065C005D6226 /* Frameworks */,
 				36C78D32294B065C005D6226 /* Resources */,
+				36FADA51294E3E4C00D98994 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -78,7 +104,7 @@
 			);
 			name = NewMan;
 			productName = NewMan;
-			productReference = 36C78D34294B065C005D6226 /* NewMan.app */;
+			productReference = 36FADA4E294E38ED00D98994 /* NewMan.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -105,7 +131,7 @@
 				Base,
 			);
 			mainGroup = 36C78D2B294B065C005D6226;
-			productRefGroup = 36C78D35294B065C005D6226 /* Products */;
+			productRefGroup = 36C78D2B294B065C005D6226;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -132,7 +158,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				36C78D3A294B065C005D6226 /* ViewController.swift in Sources */,
+				36C78D49294B0B8B005D6226 /* PopoverViewController.swift in Sources */,
 				36C78D38294B065C005D6226 /* AppDelegate.swift in Sources */,
+				36C78D4B294B0DD7005D6226 /* EventMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,22 +297,34 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NewMan/NewMan.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T5D5TDU2PQ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NewMan/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "New Man";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Weykon.NewMan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -296,22 +336,34 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NewMan/NewMan.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T5D5TDU2PQ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NewMan/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "New Man";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Weykon.NewMan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
