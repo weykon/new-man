@@ -9,7 +9,8 @@ a tool of macOS easily searching with chatGPT !
 ## short key 
 
 ```
-option + space
+option + space  # open and close
+cmd + R         # refresh the website
 ```
 
 ## LICENSE
