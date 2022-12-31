@@ -9,9 +9,12 @@ import HotKey
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var Menu: NSMenu!
+    
     var eventMonitor: EventMonitor?
+    
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-    let hotKey = HotKey(key: .space, modifiers: [.option])
+    let toggleHotKey = HotKey(key: .space, modifiers: [.option])
+    let refreshHotKey = HotKey(key: .r, modifiers: [.command])
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
       
@@ -33,9 +36,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // 修复按钮单击事件无效问题
         Menu.delegate = self;
         
-        hotKey.keyDownHandler = {
+        toggleHotKey.keyDownHandler = {
             self.togglePopover(self.popover)
         }
+        refreshHotKey.keyDownHandler = {
+            let popoverViewController = self.popover.contentViewController as! PopoverViewController
+            popoverViewController.WebView?.reload()
+        }
+     
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -82,20 +90,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
     }
-    @objc func optionSpaceHandler() {
-//        if let event = NSApp.currentEvent {
-//            if NSEvent.modifierFlags.contains(.option){
-//                if event.charactersIgnoringModifiers == " " {
-//                  // The space key is down, so do something here
-//                    NSLog("here ")
-//                }
-//              }
-//        }
-    }
-    
+
     @IBAction func Quit(_ sender: Any) {
         NSApplication.shared.terminate(self)
     }
+    
+    @IBAction func Refresh(_ sender: Any) {
+        let popoverViewController = popover.contentViewController as! PopoverViewController
+        popoverViewController.WebView?.reload()
+    }
+    
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        // 在这里检查是否应该启用菜单栏按钮
+        return true
+    }
+    
 }
 
 extension AppDelegate: NSMenuDelegate {

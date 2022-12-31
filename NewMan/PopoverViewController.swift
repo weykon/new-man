@@ -19,6 +19,8 @@ class PopoverViewController: NSViewController {
         let url = URL(string: "https://chat.openai.com/chat")!
         WebView.load(URLRequest(url: url))    
     }
+    
+    
 }
 
 extension PopoverViewController {
