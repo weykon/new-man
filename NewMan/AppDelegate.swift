@@ -15,6 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     let toggleHotKey = HotKey(key: .space, modifiers: [.option])
     var refreshHotKey : HotKey?
+    var escHotKey: HotKey?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
       
@@ -27,6 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         popover.contentViewController = PopoverViewController.freshController()
+        
         eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in
             if let strongSelf = self, strongSelf.popover.isShown {
                 strongSelf.closePopover(event!)
@@ -61,30 +63,39 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     // 设置应用内快捷键，启用
-    func onListenRefreshHotkey () {
+    func onListenOpeningHotkey () {
         refreshHotKey = HotKey(key: .r, modifiers: [.command])
         refreshHotKey?.keyDownHandler = {
             let popoverViewController = self.popover.contentViewController as! PopoverViewController
             popoverViewController.WebView?.reload()
         }
+        escHotKey = HotKey(key: .escape,modifiers:[])
+        escHotKey?.keyDownHandler = {
+            self.closePopover(self.popover)
+        }
     }
-    func unregisterRefreshHotkey(){
+    func unregisterClosingHotkey(){
         refreshHotKey?.keyDownHandler = nil
         refreshHotKey?.keyUpHandler = nil
         refreshHotKey = nil
+        escHotKey?.keyDownHandler = nil
+        escHotKey?.keyUpHandler = nil
+        escHotKey = nil
     }
     // 显示Popover
     @objc func showPopover(_ sender: AnyObject) {
         if let button = statusItem.button {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
-            onListenRefreshHotkey()
+            onListenOpeningHotkey()
+            // 降低显示层级
+            popover.contentViewController?.view.window?.level=NSWindow.Level.submenu;
         }
         eventMonitor?.start()
     }
     // 隐藏Popover
     @objc func closePopover(_ sender: AnyObject) {
         popover.performClose(sender)
-        unregisterRefreshHotkey()
+        unregisterClosingHotkey()
         eventMonitor?.stop()
     }
     // 接管togglePopover
