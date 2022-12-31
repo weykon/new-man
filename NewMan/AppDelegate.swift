@@ -9,9 +9,12 @@ import HotKey
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var Menu: NSMenu!
+    
     var eventMonitor: EventMonitor?
+    
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-    let hotKey = HotKey(key: .space, modifiers: [.option])
+    let toggleHotKey = HotKey(key: .space, modifiers: [.option])
+    var refreshHotKey : HotKey?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
       
@@ -33,7 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // 修复按钮单击事件无效问题
         Menu.delegate = self;
         
-        hotKey.keyDownHandler = {
+        toggleHotKey.keyDownHandler = {
             self.togglePopover(self.popover)
         }
     }
@@ -56,18 +59,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             showPopover(sender)
         }
     }
+    
+    // 设置应用内快捷键，启用
+    func onListenRefreshHotkey () {
+        refreshHotKey = HotKey(key: .r, modifiers: [.command])
+        refreshHotKey?.keyDownHandler = {
+            let popoverViewController = self.popover.contentViewController as! PopoverViewController
+            popoverViewController.WebView?.reload()
+        }
+    }
+    func unregisterRefreshHotkey(){
+        refreshHotKey?.keyDownHandler = nil
+        refreshHotKey?.keyUpHandler = nil
+        refreshHotKey = nil
+    }
     // 显示Popover
     @objc func showPopover(_ sender: AnyObject) {
         if let button = statusItem.button {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
-            
+            onListenRefreshHotkey()
         }
         eventMonitor?.start()
-        
     }
     // 隐藏Popover
     @objc func closePopover(_ sender: AnyObject) {
         popover.performClose(sender)
+        unregisterRefreshHotkey()
         eventMonitor?.stop()
     }
     // 接管togglePopover
@@ -82,20 +99,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
     }
-    @objc func optionSpaceHandler() {
-//        if let event = NSApp.currentEvent {
-//            if NSEvent.modifierFlags.contains(.option){
-//                if event.charactersIgnoringModifiers == " " {
-//                  // The space key is down, so do something here
-//                    NSLog("here ")
-//                }
-//              }
-//        }
-    }
-    
+
     @IBAction func Quit(_ sender: Any) {
         NSApplication.shared.terminate(self)
     }
+    
+    @IBAction func Refresh(_ sender: Any) {
+        let popoverViewController = popover.contentViewController as! PopoverViewController
+        popoverViewController.WebView?.reload()
+    }
+    
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        // 在这里检查是否应该启用菜单栏按钮
+        return true
+    }
+    
 }
 
 extension AppDelegate: NSMenuDelegate {

@@ -687,8 +687,12 @@
                         <menuItem title="关于" image="NSTouchBarGetInfoTemplate" id="AtM-ua-sLS" userLabel="关于">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
+                        <menuItem title="刷新" image="NSRefreshTemplate" keyEquivalent="r" id="tHY-ur-Wqi" userLabel="刷新">
+                            <connections>
+                                <action selector="Refresh:" target="Voe-Tx-rLC" id="iDt-ba-kuA"/>
+                            </connections>
+                        </menuItem>
                         <menuItem title="退出" image="NSStopProgressFreestandingTemplate" keyEquivalent="q" id="gqW-l0-Myb">
-                            <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="Quit:" target="Voe-Tx-rLC" id="nr4-dN-Nus"/>
                             </connections>
@@ -722,10 +726,11 @@
                 </viewController>
                 <customObject id="mMP-XY-0hm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-60" y="-269"/>
+            <point key="canvasLocation" x="484" y="559"/>
         </scene>
     </scenes>
     <resources>
+        <image name="NSRefreshTemplate" width="18" height="21"/>
         <image name="NSStopProgressFreestandingTemplate" width="20" height="20"/>
         <image name="NSTouchBarGetInfoTemplate" width="20" height="20"/>
     </resources>
