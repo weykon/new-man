@@ -4,13 +4,11 @@ a tool of macOS easily searching with chatGPT !
 
 ![](./preview.gif)
 
-## ~~[Download](https://github.com/weykon/new-man/releases)~~
+## [Download](https://github.com/weykon/new-man/releases)
 
-!!!Beacause I can not register be an apple developer, I can not distribute an vaildate app.!!!
+I used some tool doing succeed build out the app.
 
-only one way to use it is compile by yourself.
-
-(or any suggestion tell me)
+accept installation executing and app executing in osx performance security setting.
 
 ## short key 
 

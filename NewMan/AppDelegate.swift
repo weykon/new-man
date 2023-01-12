@@ -6,9 +6,28 @@
 //
 import Cocoa
 import HotKey
+import Darwin
+
 @main
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate  {
     @IBOutlet weak var Menu: NSMenu!
+
+    @IBOutlet weak var PortTextField: NSTextField!
+    
+    @IBAction func update_proxy(_ sender: NSButton) {
+        print("update_proxy",PortTextField.stringValue)
+        let port = PortTextField.stringValue
+        let names = ["https_proxy","http_proxy","all_proxy"]
+        let value = ["http://127.0.0.1:"+port,
+                     "http://127.0.0.1:"+port,
+                     "socks5://127.0.0.1:"+port]
+        let overwrite: Int32 = 1
+        
+        for (index,name) in names.enumerated() {
+            setenv(name, value[index], overwrite)
+        }
+    }
+
     
     var eventMonitor: EventMonitor?
     
@@ -41,8 +60,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         toggleHotKey.keyDownHandler = {
             self.togglePopover(self.popover)
         }
+
     }
-    
+   
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
@@ -127,7 +147,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
 }
 
-extension AppDelegate: NSMenuDelegate {
+extension AppDelegate: NSMenuDelegate, NSTextFieldDelegate {
     
     // 为了保证按钮的单击事件设置有效，menu要去除
     func menuDidClose(_ menu: NSMenu) {
@@ -144,4 +164,9 @@ extension AppDelegate: NSMenuDelegate {
     @objc func doOpen(){
         
     }
+    
+     func controlTextDidEndEditing(_ obj: Notification) {
+         print("did end");
+    }
+    
 }

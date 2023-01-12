@@ -678,6 +678,9 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="NewMan" customModuleProvider="target">
                     <connections>
                         <outlet property="Menu" destination="k8e-mK-JwB" id="HEk-7D-cry"/>
+                        <outlet property="PortTextField" destination="Eld-E0-yH5" id="By7-zx-yV4"/>
+                        <outlet property="abc" destination="Eld-E0-yH5" id="wjC-Ef-0Fx"/>
+                        <outlet property="proxy_port" destination="Lcz-tF-g8Z" id="r5H-sS-KiJ"/>
                     </connections>
                 </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -692,6 +695,12 @@
                                 <action selector="Refresh:" target="Voe-Tx-rLC" id="iDt-ba-kuA"/>
                             </connections>
                         </menuItem>
+                        <menuItem title="设置" id="zQJ-KC-kNK" userLabel="设置">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <outlet property="view" destination="Lcz-tF-g8Z" id="Mm3-gh-kX7"/>
+                            </connections>
+                        </menuItem>
                         <menuItem title="退出" image="NSStopProgressFreestandingTemplate" keyEquivalent="q" id="gqW-l0-Myb">
                             <connections>
                                 <action selector="Quit:" target="Voe-Tx-rLC" id="nr4-dN-Nus"/>
@@ -699,6 +708,41 @@
                         </menuItem>
                     </items>
                 </menu>
+                <customView id="Lcz-tF-g8Z">
+                    <rect key="frame" x="0.0" y="0.0" width="326" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hbf-Eb-EK0">
+                            <rect key="frame" x="49" y="163" width="58" height="16"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="代理端口" id="maS-bn-PTY">
+                                <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eld-E0-yH5">
+                            <rect key="frame" x="119" y="160" width="54" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="fHU-q1-Fu4">
+                                <font key="font" usesAppearanceFont="YES"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35k-Uu-R4Z">
+                            <rect key="frame" x="187" y="153" width="61" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="push" title="更新" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mRG-7s-5VL">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="update_proxy:" target="Voe-Tx-rLC" id="glV-ge-PHS"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
             </objects>
             <point key="canvasLocation" x="484" y="63"/>
         </scene>

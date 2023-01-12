@@ -8,7 +8,8 @@
 import Cocoa
 import WebKit
 
-class PopoverViewController: NSViewController {
+
+class PopoverViewController: NSViewController,WKNavigationDelegate {
 
     @IBOutlet var WebView: WKWebView!
     
@@ -17,6 +18,7 @@ class PopoverViewController: NSViewController {
         // Do view setup here.
         
         let url = URL(string: "https://chat.openai.com/chat")!
+        
         WebView.load(URLRequest(url: url))
     }
     
