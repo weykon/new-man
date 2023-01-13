@@ -21,12 +21,6 @@ accept installation executing and app executing in osx performance security sett
 
 ## [Discussion](https://github.com/weykon/new-man/discussions)
 
-## short key 
-
-```
-option + space  # open and close
-cmd + R         # refresh the website
-```
 
 ## LICENSE
 
