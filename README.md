@@ -1,7 +1,7 @@
 # New Man ![GitHub all releases](https://img.shields.io/github/downloads/weykon/new-man/total)
 
-a tool of macOS easily searching with chatGPT !
-Fast, Lite, Smooth animation as MacOS native App.
+a tool of macOS easily searching with chatGPT !  
+`Fast`, `Lite`, `Smooth animation` as MacOS native App.
 
 ## Features
 - proxy setting
