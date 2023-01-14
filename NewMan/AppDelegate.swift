@@ -18,16 +18,17 @@ class AppDelegate: NSObject, NSApplicationDelegate  {
         print("update_proxy",PortTextField.stringValue)
         let port = PortTextField.stringValue
         let names = ["https_proxy","http_proxy","all_proxy"]
-        let value = ["http://127.0.0.1:"+port,
-                     "http://127.0.0.1:"+port,
-                     "socks5://127.0.0.1:"+port]
+        let value = [
+            "http://127.0.0.1:"+port,
+            "http://127.0.0.1:"+port,
+            "socks5://127.0.0.1:"+port
+        ]
         let overwrite: Int32 = 1
         
         for (index,name) in names.enumerated() {
             setenv(name, value[index], overwrite)
         }
     }
-
     
     var eventMonitor: EventMonitor?
     
@@ -107,18 +108,19 @@ class AppDelegate: NSObject, NSApplicationDelegate  {
         if let button = statusItem.button {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
             onListenOpeningHotkey()
-            // 降低显示层级
+            // 降低显示层级 (en: lower view layout)
             popover.contentViewController?.view.window?.level=NSWindow.Level.submenu;
         }
         eventMonitor?.start()
     }
-    // 隐藏Popover
+    
+    // 隐藏Popover  (en: hide popover)
     @objc func closePopover(_ sender: AnyObject) {
         popover.performClose(sender)
         unregisterClosingHotkey()
         eventMonitor?.stop()
     }
-    // 接管togglePopover
+    // 接管togglePopover (en: handle toggle popover)
     @objc func mouseClickHandler() {
         if let event = NSApp.currentEvent {
             switch event.type {

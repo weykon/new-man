@@ -20,8 +20,19 @@ class PopoverViewController: NSViewController,WKNavigationDelegate {
         let url = URL(string: "https://chat.openai.com/chat")!
         
         WebView.load(URLRequest(url: url))
+        WebView.navigationDelegate = self
     }
     
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if navigationAction.navigationType == .linkActivated {
+            if let url = navigationAction.request.url,
+                NSWorkspace.shared.open(url) {
+                decisionHandler(.cancel)
+                return
+            }
+        }
+        decisionHandler(.allow)
+    }
     
 }
 
@@ -37,4 +48,6 @@ extension PopoverViewController {
         }
         return viewcontroller
     }
+
 }
+
