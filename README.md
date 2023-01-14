@@ -21,7 +21,7 @@ I used some tool doing succeed build out the app.
 accept installation executing and app executing in osx performance security setting.
 
 ## [Discussion](https://github.com/weykon/new-man/discussions)
-
+## [ If you CAN NOT open it ](https://github.com/weykon/new-man/discussions/13)
 
 ## LICENSE
 
