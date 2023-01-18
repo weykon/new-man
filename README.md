@@ -4,6 +4,7 @@ a tool of macOS easily searching with chatGPT !
 `Fast`, `Lite`, `Smooth animation` as MacOS native App.
 
 <h3>Wish everyone can use it to have a high-efficiency work with it!</h3>
+if you like this project, kindly give it a star 🌟.  
 
 ## Features
 - proxy setting
